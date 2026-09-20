@@ -22,7 +22,11 @@ function saveCompletedSet(set) {
 }
 
 export function todayKey(date = new Date()) {
-  return date.toISOString().slice(0, 10) // YYYY-MM-DD, local-ish is fine for a habit tracker
+  // Local calendar date (not toISOString, which is UTC and would roll the day over mid-evening).
+  const y = date.getFullYear()
+  const m = String(date.getMonth() + 1).padStart(2, '0')
+  const d = String(date.getDate()).padStart(2, '0')
+  return `${y}-${m}-${d}`
 }
 
 function entryKey(dateKey, blockId) {

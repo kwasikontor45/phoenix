@@ -104,26 +104,10 @@ export const weeklyBlocks = [
   },
 ]
 
-// One-off, dated commitments — not part of the daily loop, but shown alongside it
-// so nothing gets double-booked into the open afternoon window.
-export const appointments = [
-  {
-    id: 'va-appt-2026-09-18',
-    date: '2026-09-18',
-    start: '14:30',
-    end: '15:30',
-    title: 'VA Appointment — West Los Angeles Medical Center',
-    location: 'on-campus',
-  },
-  {
-    id: 'va-appt-2026-11-19',
-    date: '2026-11-19',
-    start: '13:30',
-    end: '14:30',
-    title: 'VA Appointment — West Los Angeles Medical Center',
-    location: 'Medical Center Division: WEST LOS ANGELES',
-  },
-]
+// One-off, dated commitments. Deliberately EMPTY in the shipped bundle: this app is a public static site,
+// so anything written here is readable by anyone who opens the JS. Personal appointments live in the
+// calendar (Orage), not in this file. The UI renders nothing when this list is empty.
+export const appointments = []
 
 export const crisisResources = [
   { label: '988 Suicide & Crisis Lifeline', value: 'Call or text 988', href: 'tel:988' },
