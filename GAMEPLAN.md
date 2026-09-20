@@ -1,6 +1,6 @@
 # phoenix — GAMEPLAN
 
-Session ID below is a placeholder — this scaffold was built outside your local `arc sop` tooling, so there's no real session ID to log against yet. Reconcile with `arc sop ack` the first time you open this locally, per your usual SOP.
+The Phase 1 scaffold was built outside the local `arc sop` tooling (placeholder sid below); the local shipping pass further down carries a real sid. Design doc: `docs/recovery-app-gameplan.md`.
 
 ## 2026-09-19 · [claude] · [sid:PENDING-LOCAL-RECONCILE] · [DONE] Phase 1 — routine engine
 
@@ -19,3 +19,13 @@ Session ID below is a placeholder — this scaffold was built outside your local
 - [ ] Open decision: local-only stays the default, or is cross-device sync wanted eventually?
 - [ ] Fix `todayKey()` — currently UTC-based via `toISOString()`, should be a real local-date formatter (see README "Known rough edges")
 - [ ] Set up git remote (dual-push, per convention) once this is worth versioning for real
+
+## 2026-09-19 · claude · [sid:796d3fe7-b78b-4551-9add-97520a1a204e] · [DONE] Local shipping pass (deploy pending go-ahead)
+
+- Imported here (`~/khaos-lab/phoenix`, private repo `kwasikontor45/phoenix`); pristine scaffold is the first commit, changes are the second.
+- Fixed the UTC date bug: `todayKey()` now uses the local calendar date (at 9:30 PM Pacific the old code already returned tomorrow's date, which would have mis-filed evening check-offs).
+- **Privacy:** dated appointments removed from the bundle (`appointments = []`) -- the deployed site is a public static bundle, so nothing personal may live in `src/`. Appointments stay in the calendar. Checked `dist/` for leaks: none.
+- Added `noindex`/`robots.txt`, `_headers` (CSP, no-referrer, frame-deny, nosniff) and a web manifest so it installs to a phone home screen.
+- Verified: build clean; headless Chromium renders 11 blocks + crisis panel, phase colour correct (Nyx at night).
+- `arc deploy phoenix` added (creates the Pages project on first run). **Not run:** creating a public Pages site was blocked by the permission guard and needs an explicit go-ahead from you.
+- Not yet: contingency mirror (create empty private repo `k6-bleedin6ed6e-k6/phoenix`, then `arc wire`); weekly-review block exists in data but is not rendered (Phase 4).
